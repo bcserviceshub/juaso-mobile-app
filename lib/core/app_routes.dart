@@ -1,12 +1,12 @@
 import 'package:go_router/go_router.dart';
-import 'package:juaso/features/auth/presentation/pages/signin/forgot_password_page.dart';
-import 'package:juaso/features/auth/presentation/pages/signin/password_verification_email.dart';
-import 'package:juaso/features/auth/presentation/pages/signup/signup_page.dart';
-import 'package:juaso/features/auth/presentation/pages/signup/signup_confirm_email.dart';
-import 'package:juaso/features/auth/presentation/pages/signup/signup_confirm_phone.dart';
-import 'package:juaso/features/onboarding/view/onboarding_page.dart';
-import 'package:juaso/features/splash_screen/splash_screen.dart';
-import 'package:juaso/features/auth/presentation/pages/signin/signin_page.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/signin/forgot_password_page.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/signin/password_verification_email.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/signup/signup_page.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/signup/signup_confirm_email.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/signup/signup_confirm_phone.dart';
+import 'package:juaso_mobile_app/features/onboarding/view/onboarding_page.dart';
+import 'package:juaso_mobile_app/features/splash_screen/splash_screen.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/signin/signin_page.dart';
 
 GoRouter appRouter = GoRouter(
   routes: [

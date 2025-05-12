@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:juaso/core/utils/theme_items/theme_provider.dart';
+import 'package:juaso_mobile_app/core/utils/theme_items/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class AppColors {

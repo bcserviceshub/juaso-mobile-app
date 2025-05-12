@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:juaso/core/utils/app_colors.dart';
+import 'package:juaso_mobile_app/core/utils/app_colors.dart';
 
 
 class AppButton extends StatelessWidget {

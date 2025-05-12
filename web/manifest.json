@@ -1,6 +1,6 @@
 {
-    "name": "juaso",
-    "short_name": "juaso",
+    "name": "juaso-mobile-app",
+    "short_name": "juaso-mobile-app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

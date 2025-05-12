@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:juaso/core/utils/app_colors.dart';
-import 'package:juaso/core/widgets/text_widgets.dart';
+import 'package:juaso_mobile_app/core/utils/app_colors.dart';
+import 'package:juaso_mobile_app/core/widgets/text_widgets.dart';
 
 
 class AppTextField extends StatefulWidget {

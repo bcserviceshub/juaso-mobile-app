@@ -1,10 +1,10 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:juaso/core/app_routes.dart';
-import 'package:juaso/core/utils/flavor_config/flavor_model.dart';
-import 'package:juaso/core/utils/theme_items/app_theme.dart';
-import 'package:juaso/core/utils/theme_items/theme_provider.dart';
+import 'package:juaso_mobile_app/core/app_routes.dart';
+import 'package:juaso_mobile_app/core/utils/flavor_config/flavor_model.dart';
+import 'package:juaso_mobile_app/core/utils/theme_items/app_theme.dart';
+import 'package:juaso_mobile_app/core/utils/theme_items/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 

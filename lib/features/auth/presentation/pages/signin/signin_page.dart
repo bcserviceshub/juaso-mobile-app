@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:juaso/core/utils/app_colors.dart';
-import 'package:juaso/core/widgets/app_buttons.dart';
-import 'package:juaso/core/widgets/text_fields.dart';
-import 'package:juaso/core/widgets/text_widgets.dart';
-import 'package:juaso/core/widgets/diagonal_background.dart';
-import 'package:juaso/features/auth/presentation/pages/signin/forgot_password_page.dart';
+import 'package:juaso_mobile_app/core/utils/app_colors.dart';
+import 'package:juaso_mobile_app/core/widgets/app_buttons.dart';
+import 'package:juaso_mobile_app/core/widgets/text_fields.dart';
+import 'package:juaso_mobile_app/core/widgets/text_widgets.dart';
+import 'package:juaso_mobile_app/core/widgets/diagonal_background.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/signin/forgot_password_page.dart';
 
 class SigninPage extends StatefulWidget {
   static const String routeName = '/signin';

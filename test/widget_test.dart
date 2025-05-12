@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:juaso/app.dart';
+import 'package:juaso_mobile_app/app.dart';
 
 
 void main() {

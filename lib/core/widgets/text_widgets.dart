@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:juaso/core/utils/app_colors.dart';
+import 'package:juaso_mobile_app/core/utils/app_colors.dart';
 
 
 

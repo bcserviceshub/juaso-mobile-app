@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:juaso/features/onboarding/view/onboarding_page.dart';
+import 'package:juaso_mobile_app/features/onboarding/view/onboarding_page.dart';
 
 // Route name for onboarding
 

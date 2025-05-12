@@ -1,4 +1,4 @@
-package com.example.juaso
+package com.example.juaso_mobile_app
 
 import io.flutter.embedding.android.FlutterActivity
 
