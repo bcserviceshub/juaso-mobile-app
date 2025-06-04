@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:juaso_mobile_app/core/utils/app_colors.dart';
+import 'package:juaso_mobile_app/core/widgets/app_sizes.dart';
 import 'package:juaso_mobile_app/core/widgets/text_widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -55,10 +56,9 @@ class _OtpFieldState extends State<OtpField> {
         if (widget.title != null) ...[
           BodyText(
             text: widget.title!,
-            fontSize: 11.sp,
-            textColor: AppColors.natural900,
+            textColor: AppColors(context: context).nutural900(),
           ),
-          SizedBox(height: 8.h),
+          MediumSized(),
         ],
         PinCodeTextField(
           key: _pinKey,
@@ -71,10 +71,10 @@ class _OtpFieldState extends State<OtpField> {
             borderRadius: BorderRadius.circular(12),
             fieldHeight: widget.fieldSize.w,
             fieldWidth: widget.fieldSize.w,
-            activeFillColor: Colors.white,
-            inactiveFillColor: Colors.white,
-            selectedFillColor: Colors.white,
-            activeColor: AppColors.primary,
+            activeFillColor: AppColors(context: context).background(),
+            inactiveFillColor: AppColors(context: context).background(),
+            selectedFillColor: AppColors(context: context).background(),
+            activeColor: AppColors.nutural500,
             inactiveColor: widget.hasError ? AppColors.error900 : AppColors.nutural500,
             selectedColor: AppColors.primary,
             errorBorderColor: AppColors.error900,

@@ -4,12 +4,11 @@ import 'package:provider/provider.dart';
 
 class AppColors {
   BuildContext context;
-  bool isDarkMode = false;
+  late bool isDarkMode;
   AppColors({
     required this.context
   }){
-      isDarkMode = context.read<ThemeProvider>().isDarkMode;
-
+      isDarkMode = context.watch<ThemeProvider>().isDarkMode;
   }
   static Color primary = const Color(0xFF007F61);
   static Color secondary = const Color(0xFF5F6369);
@@ -20,19 +19,19 @@ class AppColors {
   static Color success300 = const Color(0xFF99C39B);
   static Color success900 = const Color(0xFF006804);
 
-  //natural 
-  Color nutural100()=> 
-       isDarkMode ? const Color(0xFF333d4d) :const Color(0xFFF5F5F5);
+  //nutural 
+  Color nutural100() => 
+       isDarkMode ? const Color(0xFF333d4d) : const Color(0xFFF5F5F5);
   static Color nutural200 = const Color(0xFFD2D2D2);
   static Color nutural400 = const Color(0xFFA2A2A2);
   static Color nutural500 = const Color(0xFFBABABA);
 
   Color nutural600() =>
-      isDarkMode ? Colors.white.withOpacity(0.85):const Color(0xFF737373); 
-      Color nutural700() => isDarkMode ? Colors.white : const Color(0xFF5B5B5B);
-      Color nutural800() =>
-      isDarkMode ? Color.fromARGB(255, 155, 153, 153) : const Color(0xFF303030);
-      static Color natural900 = const Color(0xFF1f1f1f);
+      isDarkMode ? Colors.white.withOpacity(0.85) : const Color(0xFF737373); 
+  Color nutural700() => isDarkMode ? Colors.white : const Color(0xFF5B5B5B);
+  Color nutural800() =>
+      isDarkMode ? const Color.fromARGB(255, 155, 153, 153) : const Color(0xFF303030);
+  Color nutural900() => isDarkMode ? Colors.white : const Color(0xFF1f1f1f);
   
   //error 
   static Color error900 = const Color(0xFFD20404);
@@ -50,8 +49,4 @@ class AppColors {
   Color foreground() => isDarkMode ? Colors.white : Colors.black;
   Color appTextFieldSuccess() =>
       isDarkMode ? Colors.white : const Color(0xFF006804);
-
-  natural(int i) {}
-
-
 }

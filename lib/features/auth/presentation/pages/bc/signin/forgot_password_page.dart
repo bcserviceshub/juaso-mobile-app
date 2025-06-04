@@ -3,10 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:juaso_mobile_app/core/utils/app_colors.dart';
 import 'package:juaso_mobile_app/core/widgets/app_buttons.dart';
+import 'package:juaso_mobile_app/core/widgets/app_sizes.dart';
 import 'package:juaso_mobile_app/core/widgets/text_fields.dart';
 import 'package:juaso_mobile_app/core/widgets/text_widgets.dart';
 import 'package:juaso_mobile_app/core/widgets/diagonal_background.dart';
-import 'package:juaso_mobile_app/features/auth/presentation/pages/signin/password_verification_email.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signin/password_verification_email.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   static const String routeName = '/signin/forgot-password';
@@ -30,9 +31,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     final textColor = AppColors(context: context).foreground();
     final screenHeight = MediaQuery.of(context).size.height;
-    
+
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Stack(
         children: [
           DiagonalBackground(
@@ -77,24 +77,18 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Forgot Password',
-                            style: TextStyle(
-                              fontSize: 24.sp,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.natural900,
-                            ),
+                          Header1Text(
+                            text: 'Forgot Password',
+                            fontWeight: FontWeight.w700,
+                            textColor: AppColors(context: context).nutural900(),
                           ),
-                          SizedBox(height: 8.h),
-                          Text(
-                            'Enter your email address or phone number below to reset your password.',
-                            style: TextStyle(
-                              fontSize: 11.sp,
-                              color: AppColors.natural900,
-                              height: 1.5,
-                            ),
+                          MediumSized(),
+                          BodyText(
+                            text:
+                                'Enter your email address or phone number below to reset your password.',
+                            textColor: AppColors(context: context).nutural900(),
                           ),
-                          SizedBox(height: 32.h),
+                          ExtraLargeSized(),
                           AppTextField(
                             title: 'Email Address or Phone Number',
                             hintText: 'Enter your email or phone number',
@@ -102,7 +96,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             inputType: TextInputType.emailAddress,
                             onChanged: (_) {},
                           ),
-                          SizedBox(height: 32.h),
+                          ExtraLargeSized(),
                           Center(
                             child: SizedBox(
                               width: 263.w,
@@ -110,8 +104,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               child: AppButton(
                                 text: 'Verify email',
                                 isLoading: _isLoading,
-                                onPressed: (){
-                                  context.push(PasswordVerficationEmail.routeName);
+                                onPressed: () {
+                                  context
+                                      .push(PasswordVerficationEmail.routeName);
                                 },
                               ),
                             ),
@@ -128,4 +123,4 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       ),
     );
   }
-} 
+}

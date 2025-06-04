@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:juaso_mobile_app/core/utils/app_colors.dart';
+import 'package:juaso_mobile_app/core/widgets/app_sizes.dart';
 import 'package:juaso_mobile_app/core/widgets/text_widgets.dart';
 import 'package:juaso_mobile_app/core/widgets/app_buttons.dart';
-import 'package:juaso_mobile_app/features/auth/presentation/pages/signin/signin_page.dart';
-import 'package:juaso_mobile_app/features/auth/presentation/pages/signup/signup_page.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signin/signin_page.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signup/signup_page.dart';
 import 'package:juaso_mobile_app/features/onboarding/utils/onboarding_utils.dart';
+
 
 
 class OnboardingPage extends StatefulWidget {
@@ -66,7 +68,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   "assets/images/onboarding/onboarding_four.png",
                   fit: BoxFit.contain,
                 ),
-                const SizedBox(height: 10),
+                MediumSized(),
                 SizedBox(
                   height: screenSize.height * 0.30,
                   width: double.infinity,
@@ -92,17 +94,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      const MediumSized(),
                       SizedBox(
                         height: 70,
                         child: DescriptionText(
                           text: onboardingSubTitle[currentIndex],
                           textAlign: TextAlign.center,
                           fontSize: 14,
-                          textColor: AppColors.natural900,
+                          textColor: AppColors(context: context).nutural900(),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      LargeSized(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: List.generate(
@@ -118,7 +120,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 80),
+                      LargeSized(),
                       Center(
                         child: SizedBox(
                           width: 263,
@@ -134,14 +136,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SmallSized(),
                       Center(
                         child: SizedBox(
                           width: 263,
                           height: 42,
                           child: AppButtonAlt(
                             text: 'Sign in',
-                            textColor: AppColors.primary,
+                            textColor: AppColors(context: context).nutural900(),
                             onPressed: () {
                               context.push(SigninPage.routeName);
                             },
@@ -149,19 +151,19 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 25),
+                      LargeSized(),
                       Center(
                         child: LinkText(
                           fontSize: 12.sp,
                           text: 'Continue as a guest',
-                          textColor: AppColors.natural900,
+                          textColor: AppColors(context: context).nutural900(),
                           onTap: () {
                             
                             // Add guest navigation logic here
                           },
                         ),
                       ),
-                      const SizedBox(height: 50),
+                      ExtraLargeSized(),
                     ],
                   ),
                 ),

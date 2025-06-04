@@ -1,37 +1,42 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:juaso_mobile_app/core/utils/app_colors.dart';
+import 'package:juaso_mobile_app/core/utils/app_dialogs.dart';
+import 'package:juaso_mobile_app/core/utils/string_validators.dart';
 import 'package:juaso_mobile_app/core/widgets/app_buttons.dart';
+import 'package:juaso_mobile_app/core/widgets/app_sizes.dart';
 import 'package:juaso_mobile_app/core/widgets/text_fields.dart';
 import 'package:juaso_mobile_app/core/widgets/text_widgets.dart';
 import 'package:juaso_mobile_app/core/widgets/diagonal_background.dart';
-import 'package:juaso_mobile_app/features/auth/presentation/pages/signup/signup_confirm_email.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signin/forgot_password_page.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signup/signup_page.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/viewmodel/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
-class SignupPage extends StatefulWidget {
-  static const String routeName = '/signup';
-  const SignupPage({super.key});
+class SigninPage extends StatefulWidget {
+  static const String routeName = '/signin';
+  const SigninPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<SigninPage> createState() => _SigninPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
-  final TextEditingController _nameController = TextEditingController();
+class _SigninPageState extends State<SigninPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
 
-  bool _isLoading = false;
-  bool _hasError = false;
-  String _errorMessage = '';
+  bool? validEmail;
+  bool? validPassword;
+
+  String? email;
+  String? password;
 
   @override
   void dispose() {
-    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -39,7 +44,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     final textColor = AppColors(context: context).foreground();
     final screenHeight = MediaQuery.of(context).size.height;
-    
+
     return Scaffold(
       body: Stack(
         children: [
@@ -48,7 +53,7 @@ class _SignupPageState extends State<SignupPage> {
             height: screenHeight * 0.45,
             color: const Color(0xFFE0F7F7),
           ),
-          
+
           // Main Content
           SafeArea(
             child: Column(
@@ -75,7 +80,7 @@ class _SignupPageState extends State<SignupPage> {
 
                       Center(
                         child: Image.asset(
-                          'assets/images/auth/signup/signup.png',
+                          'assets/images/auth/signin/signin.png',
                           width: 160.w,
                           height: 160.h,
                           fit: BoxFit.contain,
@@ -96,77 +101,149 @@ class _SignupPageState extends State<SignupPage> {
                         children: [
                           // Title
                           Header1Text(
-                            text: 'Sign up',
+                            text: 'Welcome back!',
                             fontWeight: FontWeight.w700,
                           ),
-                          SizedBox(height: 8.h),
+                          MediumSized(),
                           BodyText(
-                            text: 'Fill your information below or register with your social account',
-                            fontSize: 11.sp,
-                            textColor: AppColors.natural900,
+                            text:
+                                ' Sign in below or use your social account to get started.',
+                            textColor: AppColors(context: context).nutural900(),
                           ),
-                          SizedBox(height: 24.h),
-                
+                          MediumSized(),
                           // Form Fields
-                          AppTextField(
-                            title: 'Full Name',
-                            hintText: 'Esi Mills',
-                            controller: _nameController,
-                            onChanged: (value) {
-                              if (_hasError) {
-                                setState(() {
-                                  _hasError = false;
-                                });
-                              }
-                            },
-                          ),
-                          SizedBox(height: 16.h),
-                
                           AppTextField(
                             title: 'Email or Phone number',
                             hintText: 'asdf123@gmail.com',
+
                             controller: _emailController,
-                            inputType: TextInputType.emailAddress,
+                            hasError: validEmail == false,
+                            errorText: StringValidators.validateEmail(
+                                _emailController.text),
                             onChanged: (value) {
-                              if (_hasError) {
-                                setState(() {
-                                  _hasError = false;
-                                });
-                              }
+                              setState(() {
+                                validEmail =
+                                    StringValidators.validateBoolEmail(value);
+                              });
                             },
                           ),
-                          SizedBox(height: 16.h),
-                
+                          MediumSized(),
+
                           AppTextField(
                             title: 'Password',
                             hintText: 'Enter your password',
-                            controller: _passwordController,
                             isPassword: true,
+                            controller: _passwordController,
+                            hasError: validPassword == false,
+                            errorText: StringValidators.validatePassword(
+                                _passwordController.text),
                             onChanged: (value) {
-                              if (_hasError) {
-                                setState(() {
-                                  _hasError = false;
-                                });
-                              }
+                              setState(() {
+                                validPassword =
+                                    _passwordController.text.length == 6;
+                              });
                             },
                           ),
-                          SizedBox(height: 24.h),
-                                                   // Sign Up Button
-                          SizedBox(height: 24.h),
-                          Center(
-                            child: SizedBox(
-                              width: 263.w,
-                              height: 42.h,
-                              child: AppButton(
-                                text: 'Sign Up',
-                                isLoading: _isLoading,
-                                onPressed: () {
-                                 context.push(SignupConfirmEmail.routeName);
-                                },
+                          MediumSized(),
+
+                          // Forgot Password
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: TextButton(
+                              onPressed: () {
+                                context.push(ForgotPasswordPage.routeName);
+                              },
+                              child: BodyText(
+                                text: 'Forgot Password?',
+                                textColor: AppColors.primary,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
-                          SizedBox(height: 24.h),
+
+                          // Terms & Conditions Text
+                          Center(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.w),
+                              child: RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    color: AppColors(context: context)
+                                        .nutural900(),
+                                  ),
+                                  children: [
+                                    const TextSpan(
+                                        text:
+                                            "By creating an account, you agree to Guaso's "),
+                                    TextSpan(
+                                      text: "Conditions of Use and Sale",
+                                      style: TextStyle(
+                                        color: AppColors.primary,
+                                        fontWeight: FontWeight.w600,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          // Handle Conditions of Use tap
+                                        },
+                                    ),
+                                    const TextSpan(text: " and "),
+                                    TextSpan(
+                                      text: "Privacy Notice",
+                                      style: TextStyle(
+                                        color: AppColors.primary,
+                                        fontWeight: FontWeight.w600,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          // Handle Privacy Notice tap
+                                        },
+                                    ),
+                                    const TextSpan(text: "."),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          LargeSized(),
+
+                          // Sign In Button
+                          Consumer<AuthViewModel>(
+                            builder: (context, viewModel, child) => Center(
+                              child: SizedBox(
+                                width: 263.w,
+                                height: 50.h,
+                                child: AppButton(
+                                  text: 'Sign In',
+                                  isLoading: viewModel.isLoadingLogin,
+                                  onPressed: () async {
+                                    if (validEmail == true &&
+                                        validPassword == true) {
+                                          
+                                      await viewModel.login(
+                                          email: _emailController.text,
+                                          password: _passwordController.text);
+                                    }
+                                     if (viewModel.errorMessage != null) {
+                                          showAppDialog(
+                                            context,
+                                            type: AppDialogType.error,
+                                            subText: viewModel.errorMessage!,
+                                          );
+                                        }else{
+                                          context.push(SignupPage.routeName);
+                                        }
+
+                                  },
+
+                                ),
+                              ),
+                            ),
+                          ),
+                          LargeSized(),
 
                           // Divider with text
                           Padding(
@@ -180,12 +257,13 @@ class _SignupPageState extends State<SignupPage> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.w),
                                   child: Text(
-                                    'or sign up with',
+                                    'or sign in with',
                                     style: TextStyle(
                                       color: AppColors.nutural500,
-                                      fontSize: 12.sp,
+                                      fontSize: 14.sp,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -199,7 +277,7 @@ class _SignupPageState extends State<SignupPage> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 24.h),
+                          LargeSized(),
 
                           // Social Media Login Options
                           Padding(
@@ -222,7 +300,8 @@ class _SignupPageState extends State<SignupPage> {
                                           shape: BoxShape.circle,
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Colors.black.withOpacity(0.1),
+                                              color:
+                                                  Colors.black.withOpacity(0.1),
                                               blurRadius: 8,
                                               offset: const Offset(0, 2),
                                             ),
@@ -238,7 +317,7 @@ class _SignupPageState extends State<SignupPage> {
                                       ),
                                     ),
                                     SizedBox(width: 24.w),
-                                    
+
                                     // Google
                                     InkWell(
                                       onTap: () {
@@ -252,7 +331,8 @@ class _SignupPageState extends State<SignupPage> {
                                           shape: BoxShape.circle,
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Colors.black.withOpacity(0.1),
+                                              color:
+                                                  Colors.black.withOpacity(0.1),
                                               blurRadius: 8,
                                               offset: const Offset(0, 2),
                                             ),
@@ -268,7 +348,7 @@ class _SignupPageState extends State<SignupPage> {
                                       ),
                                     ),
                                     SizedBox(width: 24.w),
-                                    
+
                                     // Facebook
                                     InkWell(
                                       onTap: () {
@@ -282,7 +362,8 @@ class _SignupPageState extends State<SignupPage> {
                                           shape: BoxShape.circle,
                                           boxShadow: [
                                             BoxShadow(
-                                              color: Colors.black.withOpacity(0.1),
+                                              color:
+                                                  Colors.black.withOpacity(0.1),
                                               blurRadius: 8,
                                               offset: const Offset(0, 2),
                                             ),
@@ -302,10 +383,8 @@ class _SignupPageState extends State<SignupPage> {
                               ],
                             ),
                           ),
-                          
-                          SizedBox(height: 50.h),
-                        
-                         
+
+                          ExtraLargeSized(),
                         ],
                       ),
                     ),
@@ -318,4 +397,4 @@ class _SignupPageState extends State<SignupPage> {
       ),
     );
   }
-} 
+}

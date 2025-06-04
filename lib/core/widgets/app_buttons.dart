@@ -37,7 +37,7 @@ class AppButton extends StatelessWidget {
      child: Material(
       color: color ??
       (isDisabled || isLoading ?
-       AppColors(context: context).natural(100) :
+       AppColors(context: context).nutural100() :
         AppColors.primary),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -109,7 +109,7 @@ class AppButtonAlt extends StatelessWidget {
         onPressed();
       },
       child: Material(
-        color: AppColors(context: context).natural(100),
+        color: AppColors(context: context).background(),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
           side: BorderSide(
@@ -124,8 +124,8 @@ class AppButtonAlt extends StatelessWidget {
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: AppColors(context: context).foreground(),
-                fontSize: fontSize ?? 12.sp,
+                color: textColor ?? AppColors(context: context).nutural900(),
+                fontSize: fontSize ?? 14.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),

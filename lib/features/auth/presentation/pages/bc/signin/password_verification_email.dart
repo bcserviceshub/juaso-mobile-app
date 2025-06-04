@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:juaso_mobile_app/core/utils/app_colors.dart';
 import 'package:juaso_mobile_app/core/widgets/app_buttons.dart';
+import 'package:juaso_mobile_app/core/widgets/app_sizes.dart';
 import 'package:juaso_mobile_app/core/widgets/otp_field.dart';
 import 'package:juaso_mobile_app/core/widgets/text_fields.dart';
 import 'package:juaso_mobile_app/core/widgets/text_widgets.dart';
 import 'package:juaso_mobile_app/core/widgets/diagonal_background.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signin/enter_new_password.dart';
 
 class PasswordVerficationEmail extends StatefulWidget {
   static const String routeName = '/signin/password-verification';
@@ -32,7 +35,6 @@ class _PasswordVerficationEmailState extends State<PasswordVerficationEmail> {
     final screenHeight = MediaQuery.of(context).size.height;
     
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Stack(
         children: [
           DiagonalBackground(
@@ -77,24 +79,21 @@ class _PasswordVerficationEmailState extends State<PasswordVerficationEmail> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Password Verification',
-                            style: TextStyle(
-                              fontSize: 24.sp,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.natural900,
-                            ),
+                         Header1Text(
+                            text: 'Password Verification',
+                            fontWeight: FontWeight.w700,
+                            textColor: AppColors(context: context).nutural900(),
                           ),
-                          SizedBox(height: 8.h),
-                          Text(
-                            'Enter the verification code we just sent to your email address.',
-                            style: TextStyle(
-                              fontSize: 11.sp,
-                              color: AppColors.natural900,
-                              height: 1.5,
-                            ),
+                          MediumSized(),
+                         
+                         BodyText(
+                            text:
+                                'Enter the verification code we just sent to your email address.',
+                            textColor: AppColors(context: context)
+                                .nutural900(),
                           ),
-                          SizedBox(height: 32.h),
+                          ExtraLargeSized(),
+                         
                          OtpField(
                             controller: _otpController,
                             length: 4,
@@ -113,7 +112,7 @@ class _PasswordVerficationEmailState extends State<PasswordVerficationEmail> {
                               });
                             },
                           ),
-                          SizedBox(height: 32.h),
+                          LargeSized(),
                           Center(
                             child: SizedBox(
                               width: 263.w,
@@ -121,11 +120,13 @@ class _PasswordVerficationEmailState extends State<PasswordVerficationEmail> {
                               child: AppButton(
                                 text: 'Verify Code',
                                 isLoading: _isLoading,
-                                onPressed: () {},
+                                onPressed: () {
+                                  context.push(EnterNewPassword.routeName);
+                                },
                               ),
                             ),
                           ),
-                          SizedBox(height: 24.h),
+                          LargeSized(),
                           Row(
                             children: [
                               CircleAvatar(
@@ -143,7 +144,7 @@ class _PasswordVerficationEmailState extends State<PasswordVerficationEmail> {
                                   'Didn\'t receive code? Resend in 00:59',
                                   style: TextStyle(
                                     fontSize: 11.sp,
-                                    color: AppColors.natural900,
+                                    color: AppColors(context: context).nutural900(),
                                     height: 1.5,
                                   ),
                                 ),

@@ -98,7 +98,7 @@ class _SignupConfirmPhoneState extends State<SignupConfirmPhone> {
                             child: BodyText(
                               text: 'To verify your phone number, we have sent a One Time Password (OTP) to 01037098',
                               fontSize: 11.sp,
-                              textColor: AppColors.natural900,
+                              textColor: AppColors(context: context).nutural900(),
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -154,7 +154,7 @@ class _SignupConfirmPhoneState extends State<SignupConfirmPhone> {
                                 BodyText(
                                   text: "By creating an account, you agree to Guaso's ",
                                   fontSize: 11.sp,
-                                  textColor: AppColors.natural900,
+                                  textColor: AppColors(context: context).nutural900(),
                                 ),
                                 LinkText(
                                   text: "Conditions of Use",
@@ -167,7 +167,7 @@ class _SignupConfirmPhoneState extends State<SignupConfirmPhone> {
                                 BodyText(
                                   text: " and ",
                                   fontSize: 11.sp,
-                                  textColor: AppColors.natural900,
+                                  textColor: AppColors(context: context).nutural900(),
                                 ),
                                 LinkText(
                                   text: "Privacy Notice",
@@ -180,7 +180,7 @@ class _SignupConfirmPhoneState extends State<SignupConfirmPhone> {
                                 BodyText(
                                   text: ".",
                                   fontSize: 11.sp,
-                                  textColor: AppColors.natural900,
+                                  textColor: AppColors(context: context).nutural900(),
                                 ),
                               ],
                             ),

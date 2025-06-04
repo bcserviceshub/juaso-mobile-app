@@ -1,25 +1,33 @@
 import 'package:go_router/go_router.dart';
-import 'package:juaso_mobile_app/features/auth/presentation/pages/signin/forgot_password_page.dart';
-import 'package:juaso_mobile_app/features/auth/presentation/pages/signin/password_verification_email.dart';
-import 'package:juaso_mobile_app/features/auth/presentation/pages/signup/signup_page.dart';
-import 'package:juaso_mobile_app/features/auth/presentation/pages/signup/signup_confirm_email.dart';
-import 'package:juaso_mobile_app/features/auth/presentation/pages/signup/signup_confirm_phone.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bb/signup/business_signup.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bb/signup/widgets/business_registration_complete.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signin/enter_new_password.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signin/forgot_password_page.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signin/password_verification_email.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signup/signup_page.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signup/signup_confirm_email.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signup/signup_confirm_phone.dart';
 import 'package:juaso_mobile_app/features/onboarding/view/onboarding_page.dart';
 import 'package:juaso_mobile_app/features/splash_screen/splash_screen.dart';
-import 'package:juaso_mobile_app/features/auth/presentation/pages/signin/signin_page.dart';
+import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signin/signin_page.dart';
 
 GoRouter appRouter = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const SplashScreen(),
+      builder: (context, state) => const SplashScreen() ,
     ),
     GoRoute(
-      path: '/onboarding',
+      path: BusinessSignup.routeName,
+      builder: (context, state) => const BusinessSignup(),
+      
+      ),
+    GoRoute(
+      path: OnboardingPage.routeName,
       builder: (context, state) => const OnboardingPage(),
     ),
     GoRoute(
-      path: '/signup',
+      path: SignupPage.routeName,
       builder: (context, state) => const SignupPage(),
     ),
     GoRoute(
@@ -41,6 +49,16 @@ GoRouter appRouter = GoRouter(
     GoRoute(
       path: PasswordVerficationEmail.routeName,
       builder: (context, state) => const PasswordVerficationEmail(),
-    )
+    ),
+    GoRoute(
+      path: EnterNewPassword.routeName,
+      builder: (context, state) => const EnterNewPassword(),
+    ),
+    GoRoute(
+      path: BusinessRegistrationComplete.routeName,
+      name: BusinessRegistrationComplete.routeName,
+      builder: (context, state) => const BusinessRegistrationComplete(),
+    ),
+   
   ]
 );

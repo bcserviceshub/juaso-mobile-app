@@ -15,7 +15,7 @@ class DiagonalBackground extends StatelessWidget {
     this.leftHeightPercentage = 0.75,
     this.rightHeightPercentage = 0.98,
     this.gradientStops = const [0.0, 0.5, 1.0],
-    this.opacityStops = const [1.0, 0.7, 0.3],
+    this.opacityStops = const [0.3, 0.15, 0.05],
   });
 
   @override
