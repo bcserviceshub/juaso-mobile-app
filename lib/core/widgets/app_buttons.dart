@@ -44,7 +44,7 @@ class AppButton extends StatelessWidget {
         ),
         child: isLoading
          ? Padding(
-          padding: padding ?? EdgeInsets.symmetric(vertical: 12.h),
+          padding: padding ?? const EdgeInsets.fromLTRB(16, 10, 16, 10),
           child: Center(
             
             child: SizedBox(
@@ -60,14 +60,14 @@ class AppButton extends StatelessWidget {
           ),
           )
           : Padding(
-            padding: padding ?? EdgeInsets.symmetric(vertical: 12.h),
+            padding:  padding ?? const EdgeInsets.fromLTRB(16, 10, 16, 10),
             child: Center(
               child: Text(
                 text,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: textColor ?? Colors.white,
-                  fontSize: 12.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),

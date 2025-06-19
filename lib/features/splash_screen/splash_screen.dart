@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:juaso_mobile_app/core/utils/user_preferences.dart';
 import 'package:juaso_mobile_app/features/onboarding/view/onboarding_page.dart';
 import 'package:juaso_mobile_app/core/utils/app_colors.dart';
 // Route name for onboarding
-
 
 class SplashScreen extends StatefulWidget {
   static String routeName = '/';
@@ -40,15 +40,14 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: AppColors(context: context).background(),
       body: Center(
-        child: Image.asset(
-          "assets/images/splash_screen/juaso.png",
-          height: 78,
-          width: 249,
-          fit: BoxFit.contain,
-        ).animate().fade(
-          delay: const Duration(milliseconds: 700),
-        ),
-      ),
+          child: SvgPicture.asset(
+        "assets/images/splash_screen/juaso_logo.svg",
+        height: 78,
+        width: 249,
+        fit: BoxFit.contain,
+      ).animate().fade(
+                delay: const Duration(milliseconds: 300),
+              )),
     );
   }
 }

@@ -7,6 +7,7 @@ import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signin/pass
 import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signup/signup_page.dart';
 import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signup/signup_confirm_email.dart';
 import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signup/signup_confirm_phone.dart';
+import 'package:juaso_mobile_app/features/home_page/screen/home_page.dart';
 import 'package:juaso_mobile_app/features/onboarding/view/onboarding_page.dart';
 import 'package:juaso_mobile_app/features/splash_screen/splash_screen.dart';
 import 'package:juaso_mobile_app/features/auth/presentation/pages/bc/signin/signin_page.dart';
@@ -15,7 +16,11 @@ GoRouter appRouter = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const SplashScreen() ,
+      builder: (context, state) => const HomePage() ,
+    ),
+     GoRoute(
+      path: HomePage.routeName,
+      builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
       path: BusinessSignup.routeName,
@@ -59,6 +64,7 @@ GoRouter appRouter = GoRouter(
       name: BusinessRegistrationComplete.routeName,
       builder: (context, state) => const BusinessRegistrationComplete(),
     ),
+   
    
   ]
 );

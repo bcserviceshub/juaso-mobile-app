@@ -33,13 +33,14 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  
   cupertino_icons: ^1.0.8 
+  flutter_svg: ^2.1.0
   go_router: ^15.1.1
   flutter_screenutil: ^5.9.3
   get_it: ^8.0.3
   google_fonts: ^6.2.1
   flutter_animate: ^4.5.0
-  flutter_svg: ^2.0.10+1
   syncfusion_flutter_charts: ^27.1.56
   flutter_rating_bar: ^4.0.1
   url_launcher: ^6.3.1
@@ -72,6 +73,7 @@ dependencies:
   logging: ^1.2.0
   equatable: ^2.0.7
   dartz: ^0.10.1
+  
 
 
 dev_dependencies:
@@ -107,6 +109,12 @@ flutter:
     - assets/images/onboarding/
     - assets/images/splash_screen/
     - assets/images/icons/
+    - assets/images/home/
+    - assets/images/home/banner_promo/
+    - assets/images/home/item_list_one/
+    - assets/images/home/item_list_two/
+    - assets/images/home/recently_viewed/
+    - assets/images/home/popular/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
